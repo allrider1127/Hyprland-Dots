@@ -110,7 +110,7 @@ copy_waybar() {
 
 copy_phase2() {
   local log="$1"
-  local DIR="btop cava hypr Kvantum qt5ct qt6ct swappy wallust wlogout"
+  local DIR="btop cava hypr Kvantum nvim qt5ct qt6ct swappy wallust wlogout"
   for DIR_NAME in $DIR; do
     local DIRPATH="$HOME/.config/$DIR_NAME"
     if [ -d "$DIRPATH" ]; then
@@ -126,6 +126,18 @@ copy_phase2() {
     fi
   done
   install_terminal_configs "$log"
+
+  # Copy .zshrc
+  if [ -f ".zshrc" ]; then
+    if [ -f "$HOME/.zshrc" ]; then
+      echo -e "\n${NOTE:-[NOTE]} - Zsh configuration (.zshrc) found, attempting to back up."
+      BACKUP_DIR=$(get_backup_dirname)
+      cp "$HOME/.zshrc" "$HOME/.zshrc-backup-$BACKUP_DIR" 2>&1 | tee -a "$log"
+      echo -e "${NOTE:-[NOTE]} - Backed up .zshrc to .zshrc-backup-$BACKUP_DIR." 2>&1 | tee -a "$log"
+    fi
+    cp ".zshrc" "$HOME/.zshrc" 2>&1 | tee -a "$log"
+    echo -e "${OK:-[OK]} - Copy of Zsh configuration (.zshrc) completed!" 2>&1 | tee -a "$log"
+  fi
 }
 
 # Restore Animations and Monitor Profiles plus key hypr files from backup
