@@ -102,6 +102,11 @@
     "keyColor": "green"
     },
     {
+    "type": "disk",
+    "key": "│ ├󰋊 ({1})",
+    "keyColor": "green"
+    },
+    {
     "type": "uptime",
     "key": "│ ├󰅐",
     "keyColor": "green"
