@@ -13,6 +13,16 @@
 * If you have edited a config, rename it with a unique name. During update, the contents of 
 * ~/.config/rofi/themes/ will be replaced. */
 
+/* ---- Speed optimizations & global configuration ---- */
+configuration {
+    parse-hosts: false;
+    parse-known-hosts: false;
+    drun-use-desktop-cache: true;
+    drun-reload-desktop-cache: false;
+    cache-dir: "/tmp/rofi-cache";
+    threads: 0;
+}
+
 /* ---- Global Configuration Fonts ---- */
 @import "~/.config/rofi/0-shared-fonts.rasi"
 

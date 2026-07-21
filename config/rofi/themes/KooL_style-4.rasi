@@ -245,6 +245,7 @@ element alternate.active {
     text-color:                  @alternate-active-foreground;
 }
 element-icon {
+    size:                        32px;
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
